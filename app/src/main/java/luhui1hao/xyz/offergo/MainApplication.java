@@ -3,7 +3,7 @@ package luhui1hao.xyz.offergo;
 import android.app.Application;
 import android.content.Context;
 
-class MainApplication extends Application {
+public class MainApplication extends Application {
     public static Context mContext;
 
     @Override

@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         initModules();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        moduleAdapter = new ModuleAdapter(moduleList);
+        moduleAdapter = new ModuleAdapter(this, moduleList);
         recyclerView.setAdapter(moduleAdapter);
     }
 
     private void initModules() {
         moduleList.clear();
-        moduleList.add(new Module("OkHttp"));
+        moduleList.add(new Module("OkHttp", "luhui1hao.xyz.offergo.okhttp.OkHttpActivity"));
     }
 
 }

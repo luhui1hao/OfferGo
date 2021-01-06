@@ -1,5 +1,9 @@
 package luhui1hao.xyz.offergo;
 
+import android.content.ComponentName;
+import android.content.ContentProvider;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +18,7 @@ import java.util.List;
 
 public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder> {
 
+    private Context mContext;
     private List<Module> mModuleList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -30,7 +35,8 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
 
     }
 
-    public ModuleAdapter(List<Module> moduleList) {
+    public ModuleAdapter(Context context, List<Module> moduleList) {
+        this.mContext = context;
         mModuleList = moduleList;
     }
 
@@ -51,8 +57,9 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
         holder.containerModuleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(MainApplication.getContext(), module.getName(), Toast.LENGTH_SHORT).show();
-                Log.e("luhui", module.getName());
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(mContext.getPackageName(), module.getComponent()));
+                mContext.startActivity(intent);
             }
         });
     }
